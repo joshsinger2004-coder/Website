@@ -18,7 +18,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-bold text-white mb-3">JOSH SINGER</h3>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Artist and performer. Creating sounds that move the world.
+              Live performer and event musician based in London.
             </p>
           </div>
 

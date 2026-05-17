@@ -61,18 +61,16 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>
-                Born from a passion for rhythm and melody, the journey started in a small bedroom studio 
-                with nothing but a laptop and a dream. What began as late-night sessions experimenting 
-                with beats has evolved into a full-fledged music career.
+                With a passion for live music and a natural ability to read a room, Josh has built
+                a reputation as a go-to performer for events across the UK.
               </p>
               <p>
-                Blending elements of hip-hop, electronic, and R&B, the sound is a unique fusion that 
-                resonates with listeners across the globe. Every track tells a story, every beat carries 
-                emotion, and every performance leaves an unforgettable mark.
+                From intimate private gatherings to large-scale corporate events and weddings, Josh
+                brings energy, professionalism, and a setlist tailored to every crowd.
               </p>
               <p>
-                Whether in the studio crafting the next hit or on stage delivering an electrifying 
-                performance, the mission remains the same: to create music that moves people.
+                Whether you need a performer who can set the tone for a special occasion or keep a
+                dancefloor moving all night, Josh delivers an experience guests won't forget.
               </p>
             </div>
 

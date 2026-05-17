@@ -36,7 +36,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <p className="text-blue-400 font-medium tracking-[0.3em] uppercase text-sm mb-6">
-            Music · Artist · Performance
+            Music · Live Performance · Events
           </p>
         </motion.div>
 
