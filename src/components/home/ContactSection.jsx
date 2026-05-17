@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-// Replace with your Formspree form ID from https://formspree.io
-const FORMSPREE_ID = "YOUR_FORM_ID";
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
 
 const contactInfo = [
   {
