@@ -31,7 +31,7 @@ export default function AboutSection() {
               {/* Floating badge */}
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-center">
                     {stats.map((stat, i) => (
                       <div key={i} className="text-center">
                         <stat.icon className="w-4 h-4 text-blue-400 mx-auto mb-1" />
