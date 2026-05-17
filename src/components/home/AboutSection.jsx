@@ -1,10 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Music, Headphones, Mic } from "lucide-react";
+import { Mic } from "lucide-react";
 
 const stats = [
-  { icon: Music, label: "Tracks Released", value: "50+" },
-  { icon: Headphones, label: "Monthly Listeners", value: "10K+" },
   { icon: Mic, label: "Live Shows", value: "100+" },
 ];
 
