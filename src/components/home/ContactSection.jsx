@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+
+// Replace with your Formspree form ID from https://formspree.io
+const FORMSPREE_ID = "YOUR_FORM_ID";
 
 const contactInfo = [
   {
@@ -22,16 +25,31 @@ const contactInfo = [
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = `From: ${form.name} (${form.email})\n\n${form.message}`;
-    const mailto = `mailto:josh@joshsinger.co.uk?subject=${encodeURIComponent(form.subject || "Website Enquiry")}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
-    setForm({ name: "", email: "", subject: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    setStatus("sending");
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+        setForm({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      }
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -148,17 +166,13 @@ export default function ContactSection() {
               </div>
               <Button
                 type="submit"
-                className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-medium shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40 transition-all duration-300"
+                disabled={status === "sending"}
+                className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-medium shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40 transition-all duration-300 disabled:opacity-70"
               >
-                {sent ? (
-                  <span className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5" /> Opening your email app...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <Send className="w-4 h-4" /> Send Message
-                  </span>
-                )}
+                {status === "sending" && <Loader2 className="w-5 h-5 animate-spin" />}
+                {status === "sent" && <span className="flex items-center gap-2"><CheckCircle className="w-5 h-5" /> Message Sent!</span>}
+                {status === "error" && <span>Something went wrong — try again</span>}
+                {status === "idle" && <span className="flex items-center gap-2"><Send className="w-4 h-4" /> Send Message</span>}
               </Button>
             </form>
           </motion.div>
