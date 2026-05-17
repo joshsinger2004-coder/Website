@@ -1,6 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+
+const EASE = [0.23, 1, 0.32, 1];
 
 const socials = [
   {
@@ -28,14 +30,16 @@ const socials = [
 ];
 
 export default function SocialSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="social" className="relative py-28 md:py-36 bg-black">
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5, ease: EASE }}
           className="text-center mb-16"
         >
           <p className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-4">
@@ -53,26 +57,26 @@ export default function SocialSection() {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileTap={{ scale: 0.98 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-gray-950 p-6 hover:border-white/10 transition-all duration-500"
+              transition={{ duration: 0.4, delay: shouldReduceMotion ? 0 : i * 0.05, ease: EASE }}
+              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-gray-950 p-6 hover:border-white/10 transition-[border-color] duration-200"
             >
-              {/* Gradient hover bg */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${social.color} opacity-0 group-hover:opacity-5 transition-opacity duration-200`} />
 
               <div className="relative z-10 flex items-center gap-4">
                 <div className={`p-3 rounded-xl bg-gradient-to-br ${social.color} bg-opacity-10 text-white`}>
                   {social.icon}
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-white font-semibold text-lg group-hover:text-blue-300 transition-colors duration-150">
                     {social.name}
                   </h3>
                   <p className="text-gray-500 text-sm">{social.handle}</p>
                 </div>
-                <ExternalLink className="w-4 h-4 text-gray-600 ml-auto group-hover:text-blue-400 transition-colors" />
+                <ExternalLink className="w-4 h-4 text-gray-600 ml-auto group-hover:text-blue-400 transition-colors duration-150" />
               </div>
             </motion.a>
           ))}

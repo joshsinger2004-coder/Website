@@ -1,24 +1,27 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Mic } from "lucide-react";
+
+const EASE = [0.23, 1, 0.32, 1];
 
 const stats = [
   { icon: Mic, label: "Live Shows", value: "100+" },
 ];
 
 export default function AboutSection() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="about" className="relative py-28 md:py-36 bg-black">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-950/10 via-transparent to-transparent" />
-      
+
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left - Image placeholder */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5, ease: EASE }}
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 border border-white/5">
               <img
@@ -27,8 +30,7 @@ export default function AboutSection() {
                 className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
-              {/* Floating badge */}
+
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
                 <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl px-6 py-3">
                   <div className="flex items-center justify-center">
@@ -45,12 +47,11 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right - Text */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
           >
             <p className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-4">
               About

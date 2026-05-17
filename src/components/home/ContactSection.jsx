@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Mail, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
+const EASE = [0.23, 1, 0.32, 1];
 
 const contactInfo = [
   {
@@ -23,6 +24,7 @@ const contactInfo = [
 ];
 
 export default function ContactSection() {
+  const shouldReduceMotion = useReducedMotion();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
@@ -73,10 +75,10 @@ export default function ContactSection() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5, ease: EASE }}
           className="text-center mb-16"
         >
           <p className="text-blue-400 font-medium tracking-[0.2em] uppercase text-sm mb-4">
@@ -90,10 +92,10 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-5 gap-12">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5, ease: EASE }}
             className="md:col-span-2 space-y-8"
           >
             <p className="text-gray-400 leading-relaxed">
@@ -129,10 +131,10 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
             className="md:col-span-3"
           >
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -179,16 +181,18 @@ export default function ContactSection() {
                   className="bg-gray-950 border-white/10 text-white placeholder:text-gray-600 focus:border-blue-500 rounded-xl resize-none"
                 />
               </div>
+              <motion.div whileTap={status === "sending" ? {} : { scale: 0.97 }} transition={{ duration: 0.1 }}>
               <Button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-medium shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40 transition-all duration-300 disabled:opacity-70"
+                className="w-full h-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-medium shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40 transition-[background,box-shadow] duration-200 disabled:opacity-70"
               >
                 {status === "sending" && <Loader2 className="w-5 h-5 animate-spin" />}
                 {status === "sent" && <span className="flex items-center gap-2"><CheckCircle className="w-5 h-5" /> Message Sent!</span>}
                 {status === "error" && <span>Something went wrong, try again</span>}
                 {status === "idle" && <span className="flex items-center gap-2"><Send className="w-4 h-4" /> Send Message</span>}
               </Button>
+              </motion.div>
             </form>
           </motion.div>
         </div>
