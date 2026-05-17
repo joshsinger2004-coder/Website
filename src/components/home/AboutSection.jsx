@@ -29,8 +29,8 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               
               {/* Floating badge */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl p-4">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
+                <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-xl px-6 py-3">
                   <div className="flex items-center justify-center">
                     {stats.map((stat, i) => (
                       <div key={i} className="text-center">
