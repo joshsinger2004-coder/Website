@@ -71,7 +71,7 @@ export default function Footer() {
             <img
               src="https://www.aldrix.ai/logo.svg"
               alt="Aldrix AI"
-              className="h-4 opacity-50 group-hover:opacity-100 transition-opacity"
+              className="h-6 opacity-75 group-hover:opacity-100 transition-opacity"
             />
           </a>
         </div>
