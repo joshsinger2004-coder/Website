@@ -32,3 +32,5 @@ Thumbs.db
 *.local
 coverage/
 CLAUDE.md
+*.tsbuildinfo
+vite.config.js.timestamp-*
