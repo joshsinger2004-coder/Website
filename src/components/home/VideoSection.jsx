@@ -55,7 +55,7 @@ export default function VideoSection() {
           className="mt-12 flex flex-wrap justify-center gap-4"
         >
           <a
-            href="https://instagram.com/jsingermusic246"
+            href="https://instagram.com/jsings246"
             className="group flex items-center gap-2 text-gray-500 hover:text-blue-400 transition-colors text-sm"
           >
             <ExternalLink className="w-4 h-4" />

@@ -1,7 +1,7 @@
 import React from "react";
 
 const socialLinks = [
-  { name: "Instagram", url: "https://instagram.com/joshsingermusic" },
+  { name: "Instagram", url: "https://instagram.com/jsings246" },
   { name: "Facebook", url: "https://www.facebook.com/josh.singer.710" },
 ];
 

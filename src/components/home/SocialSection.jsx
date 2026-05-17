@@ -5,8 +5,8 @@ import { ExternalLink } from "lucide-react";
 const socials = [
   {
     name: "Instagram",
-    handle: "@jsingermusic246",
-    url: "https://instagram.com/jsingermusic246",
+    handle: "@jsings246",
+    url: "https://instagram.com/jsings246",
     color: "from-pink-500 to-purple-600",
     icon: (
       <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
