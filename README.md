@@ -1,39 +1,26 @@
-**Welcome to your Base44 project** 
+# Josh Singer — Official Website
 
-**About**
+Personal website for Josh Singer, event musician and live performer based in London, UK.
 
-View and Edit  your app on [Base44.com](http://Base44.com) 
+## Stack
 
-This project contains everything you need to run your app locally.
+React 18 · Vite · Tailwind CSS · shadcn/ui · Framer Motion
 
-**Edit the code in your local development environment**
+## Development
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
-
-**Prerequisites:** 
-
-1. Clone the repository using the project's Git URL 
-2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Create an `.env.local` file and set the right environment variables
-
-```
-VITE_BASE44_APP_ID=your_app_id
-VITE_BASE44_APP_BASE_URL=your_backend_url
-
-e.g.
-VITE_BASE44_APP_ID=cbef744a8545c389ef439ea6
-VITE_BASE44_APP_BASE_URL=https://my-to-do-list-81bfaad7.base44.app
+```bash
+npm install
+npm run dev
 ```
 
-Run the app: `npm run dev`
+## Contact Form
 
-**Publish your changes**
+The contact form uses [Formspree](https://formspree.io). To activate it:
 
-Open [Base44.com](http://Base44.com) and click on Publish.
+1. Create a free account at formspree.io
+2. Create a new form pointed at your email address
+3. Replace `YOUR_FORM_ID` in `src/components/home/ContactSection.jsx` with your form ID
 
-**Docs & Support**
+## Deployment
 
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
-
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+Build output is in `./dist` after running `npm run build`. Deploy the `dist` folder to any static host (Netlify, Vercel, etc.).
