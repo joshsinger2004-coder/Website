@@ -61,16 +61,16 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>
-                With a passion for live music and a natural ability to read a room, Josh has built
+                With a passion for live music and a natural ability to read a room, I've built
                 a reputation as a go-to performer for events across the UK.
               </p>
               <p>
-                From intimate private gatherings to large-scale corporate events and weddings, Josh
-                brings energy, professionalism, and a setlist tailored to every crowd.
+                From intimate private gatherings to large-scale corporate events and weddings, I
+                bring energy, professionalism, and a setlist tailored to every crowd.
               </p>
               <p>
                 Whether you need a performer who can set the tone for a special occasion or keep a
-                dancefloor moving all night, Josh delivers an experience guests won't forget.
+                dancefloor moving all night, I deliver an experience your guests won't forget.
               </p>
             </div>
 
