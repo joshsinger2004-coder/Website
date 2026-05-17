@@ -28,7 +28,19 @@ export default function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!FORMSPREE_ID) {
+      console.error("VITE_FORMSPREE_ID is not set");
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+      return;
+    }
+
     setStatus("sending");
+
+    const timeout = setTimeout(() => {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }, 10000);
 
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -36,6 +48,8 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(form),
       });
+
+      clearTimeout(timeout);
 
       if (res.ok) {
         setStatus("sent");
@@ -45,7 +59,9 @@ export default function ContactSection() {
         setStatus("error");
         setTimeout(() => setStatus("idle"), 4000);
       }
-    } catch {
+    } catch (err) {
+      clearTimeout(timeout);
+      console.error("Form submission error:", err);
       setStatus("error");
       setTimeout(() => setStatus("idle"), 4000);
     }
