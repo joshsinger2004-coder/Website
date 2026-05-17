@@ -62,12 +62,17 @@ export default function Footer() {
             © {new Date().getFullYear()} Josh Singer. All rights reserved.
           </p>
           <a
-            href="https://github.com/matthewkayne"
+            href="https://www.aldrix.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-700 text-xs hover:text-blue-400 transition-colors"
+            className="flex items-center gap-2 text-gray-700 text-xs hover:text-blue-400 transition-colors group"
           >
-            Built by Matthew Kayne
+            Built by
+            <img
+              src="https://www.aldrix.ai/logo.svg"
+              alt="Aldrix AI"
+              className="h-4 opacity-50 group-hover:opacity-100 transition-opacity"
+            />
           </a>
         </div>
       </div>
