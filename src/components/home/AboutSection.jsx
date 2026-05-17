@@ -72,7 +72,7 @@ export default function AboutSection() {
               </p>
               <p>
                 Whether in the studio crafting the next hit or on stage delivering an electrifying 
-                performance, the mission remains the same — to create music that moves people.
+                performance, the mission remains the same: to create music that moves people.
               </p>
             </div>
 

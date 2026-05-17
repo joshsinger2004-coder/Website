@@ -170,7 +170,7 @@ export default function ContactSection() {
               >
                 {status === "sending" && <Loader2 className="w-5 h-5 animate-spin" />}
                 {status === "sent" && <span className="flex items-center gap-2"><CheckCircle className="w-5 h-5" /> Message Sent!</span>}
-                {status === "error" && <span>Something went wrong — try again</span>}
+                {status === "error" && <span>Something went wrong, try again</span>}
                 {status === "idle" && <span className="flex items-center gap-2"><Send className="w-4 h-4" /> Send Message</span>}
               </Button>
             </form>
