@@ -27,7 +27,7 @@ npm run preview      # Preview production build
 
 **Home page sections** (`src/components/home/`):
 - `HeroSection` — full-screen hero with animated orbs and scroll CTA
-- `AboutSection` — artist bio with stats overlay; image is currently served from a Base44 CDN URL and should be replaced with a self-hosted asset
+- `AboutSection` — artist bio with stats overlay; image served from `public/josh.jpg`
 - `VideoSection` — embedded Vimeo player (ID `1169385537`)
 - `SocialSection` — Instagram and Facebook link cards
 - `ContactSection` — contact form; on submit, constructs a `mailto:josh@joshsinger.co.uk` URL and opens the user's email client
